@@ -1,0 +1,15 @@
+{
+    "app_name": "Chabu AI",
+    "tagline": "Your Voice · Your Control",
+    "version": "1.0.0-hackathon",
+    "wake_word": "harry potter",
+    "team": "Chabu Labs",
+    "demo_commands": [
+        "hello",
+        "show notes",
+        "show tasks",
+        "open google",
+        "plan my day",
+        "check system"
+    ]
+}

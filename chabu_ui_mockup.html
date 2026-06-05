@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;600&amp;family=Geist:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#b3c5ff",
+            "surface-tint": "#00dbe7",
+            "surface-container-low": "#1c1b1b",
+            "on-background": "#e5e2e1",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary-fixed": "#002022",
+            "on-tertiary-fixed-variant": "#005228",
+            "surface-container-high": "#2a2a2a",
+            "secondary-fixed": "#dae1ff",
+            "surface-variant": "#353534",
+            "surface-container": "#201f1f",
+            "on-tertiary-fixed": "#00210c",
+            "surface-container-highest": "#353534",
+            "surface-bright": "#3a3939",
+            "on-secondary": "#002b75",
+            "outline-variant": "#3a494b",
+            "tertiary-fixed": "#60ff99",
+            "on-secondary-fixed-variant": "#003fa4",
+            "inverse-primary": "#00696f",
+            "secondary-container": "#0266ff",
+            "on-primary-fixed-variant": "#004f54",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#313030",
+            "primary": "#e1fdff",
+            "outline": "#849495",
+            "on-primary-container": "#006a71",
+            "error": "#ffb4ab",
+            "primary-fixed": "#74f5ff",
+            "tertiary": "#e2ffe4",
+            "on-tertiary": "#003919",
+            "on-secondary-container": "#f9f7ff",
+            "tertiary-fixed-dim": "#00e479",
+            "secondary-fixed-dim": "#b3c5ff",
+            "surface": "#131313",
+            "on-surface-variant": "#b9cacb",
+            "on-secondary-fixed": "#001849",
+            "on-tertiary-container": "#006f37",
+            "background": "#131313",
+            "on-primary": "#00363a",
+            "surface-dim": "#131313",
+            "primary-container": "#00f2ff",
+            "inverse-surface": "#e5e2e1",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#00dbe7",
+            "on-surface": "#e5e2e1",
+            "tertiary-container": "#00fb86",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "40px",
+            "margin-mobile": "16px",
+            "gutter": "24px",
+            "base": "8px",
+            "grid-cols": "12"
+          },
+          "fontFamily": {
+            "label-caps": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Geist"],
+            "body-md": ["Inter"],
+            "data-mono": ["JetBrains Mono"],
+            "display-lg": ["Geist"],
+            "headline-lg": ["Geist"]
+          },
+          "fontSize": {
+            "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "data-mono": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #131313;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), 
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.01));
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .glass-panel {
+      backdrop-filter: blur(20px);
+      background-color: rgba(32, 31, 31, 0.6);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 219, 231, 0.1);
+      border-right: 1px solid rgba(0, 219, 231, 0.1);
+    }
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.2em;
+      background-color: #00dbe7;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(0, 219, 231, 0.3);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #00fb86;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00fb86;
+    }
+  </style>
+</head>
+<body class="text-on-background font-body-md overflow-hidden h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-surface-container/60 backdrop-blur-2xl border-r border-white/20 shadow-[10px_0_30px_rgba(0,0,0,0.5)] w-72">
+<div class="px-8 mb-12">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-tint flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="memory">memory</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary leading-none">CONTROL</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70">v4.0.1-alpha</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Active Item -->
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container/20 text-surface-tint border-l-4 border-surface-tint shadow-[0_0_15px_rgba(0,219,231,0.3)] transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="forum" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-label-caps text-label-caps">Neural Chat</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-white/5 hover:text-primary transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps">Data Notes</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-white/5 hover:text-primary transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-caps text-label-caps">System Tasks</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-white/5 hover:text-primary transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings_gear">settings</span>
+<span class="font-label-caps text-label-caps">Core Settings</span>
+</a>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full py-4 border border-surface-tint text-surface-tint font-label-caps text-label-caps neon-glow hover:bg-surface-tint hover:text-on-primary-fixed transition-all mb-8">
+        INITIATE PROTOCOL
+      </button>
+<div class="space-y-4">
+<a class="flex items-center gap-4 text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">Status</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/60 backdrop-blur-xl border-b border-white/20 shadow-[0_0_15px_rgba(0,219,231,0.2)] pl-[calc(18rem+40px)]">
+<div class="flex items-center gap-4">
+<h1 class="font-display-lg text-display-lg font-bold text-primary tracking-tighter text-[28px]">Chabu AI</h1>
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-fixed/15 border border-tertiary-fixed rounded-full">
+<div class="status-dot"></div>
+<span class="font-label-caps text-label-caps text-tertiary-fixed">AWAKE</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<div class="h-10 w-10 rounded-full border-2 border-surface-tint overflow-hidden">
+<img alt="User profile" class="h-full w-full object-cover" data-alt="A high-tech digital portrait of a professional male user in his late 30s, styled with a futuristic blue glow overlaying his features. The portrait is minimalist with a deep charcoal background, focusing on surgical precision and a sense of calm control. The lighting is sharp, creating a sophisticated cyber-aesthetic suitable for a luxury AI interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbhWpBiFXxJETkG7SK1mdCel2MsErjSQYd5AiPef7wpC23FOkAxblWh5aR6jErJfTwrIzzjwHGc3lOAqUo7Mg9nYNJstSheygLbRlpCOvIcqfIvt_9koBFNB5IwLlClTgiFv5tuiIiIAur6d-oCZUD5eNAT41PcjSARRTzwe_Rd5qKDJ7LJtNYOFQxlQtK9_0GEZiF78UEZv8Vu9cW2xzSAyqSE6TRC2H-vLaXl-tR9Vhzgb0jeoxEjmX4DrL4XLDghHTtDTdGweNm"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-72 pt-20 h-full grid grid-cols-12 gap-gutter p-margin-desktop relative">
+<!-- Terminal Area (66%) -->
+<section class="col-span-8 flex flex-col h-[calc(100vh-160px)]">
+<div class="glass-panel flex-1 p-8 overflow-hidden flex flex-col font-data-mono text-data-mono">
+<div class="flex-1 overflow-y-auto space-y-4 custom-scrollbar">
+<div class="text-surface-tint">[SYSTEM] CORE INITIALIZED. PROTOCOL CHABU-V4 READY.</div>
+<div class="text-on-surface-variant">Last session: 2023-11-24 04:22:11 GMT-7</div>
+<div class="mt-8 flex gap-4">
+<span class="text-surface-tint opacity-50">$</span>
+<span class="text-primary">analyze current market volatility in decentralized clusters</span>
+</div>
+<div class="flex gap-4">
+<span class="text-tertiary-fixed opacity-50">&gt;</span>
+<div class="text-on-surface">
+              Scanning relevant nodes... <br/>
+              Market volatility is currently hovering at 14.2%. <br/>
+              High liquidity identified in sector 7G. <br/>
+              Actionable insight: Initiate protocol 'NEON-STREAM' for maximum yield optimization.
+            </div>
+</div>
+<div class="flex gap-4">
+<span class="text-surface-tint opacity-50">$</span>
+<span><span class="terminal-cursor"></span></span>
+</div>
+</div>
+<!-- Glassy Input Bar -->
+<div class="mt-8 relative">
+<div class="absolute inset-0 bg-surface-tint/5 blur-xl"></div>
+<div class="relative glass-panel rounded-xl flex items-center px-6 py-4 border border-white/10">
+<span class="material-symbols-outlined text-surface-tint mr-4" data-icon="terminal">terminal</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-primary font-data-mono placeholder:text-on-surface-variant/40" placeholder="Enter system command or neural query..." type="text"/>
+<button class="ml-4 text-surface-tint hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pulse indicator -->
+<div class="mt-4 flex items-end gap-1 h-4 px-2">
+<div class="w-1 bg-surface-tint h-1 opacity-20"></div>
+<div class="w-1 bg-surface-tint h-3 opacity-40"></div>
+<div class="w-1 bg-surface-tint h-2 opacity-60"></div>
+<div class="w-1 bg-surface-tint h-4 opacity-100 shadow-[0_0_8px_#00dbe7]"></div>
+<div class="w-1 bg-surface-tint h-2 opacity-60"></div>
+<div class="w-1 bg-surface-tint h-3 opacity-40"></div>
+<div class="w-1 bg-surface-tint h-1 opacity-20"></div>
+<span class="ml-4 font-label-caps text-[10px] text-surface-tint tracking-[0.2em] uppercase">AI processing active</span>
+</div>
+</section>
+<!-- Widget Panel (33%) -->
+<section class="col-span-4 flex flex-col gap-gutter h-[calc(100vh-160px)]">
+<!-- Smart Notes Widget -->
+<div class="glass-panel flex-1 flex flex-col p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-caps text-label-caps text-primary">SMART NOTES</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="space-y-4 overflow-y-auto">
+<!-- Note Card -->
+<div class="p-4 bg-white/5 border-l-2 border-surface-tint hover:bg-white/10 transition-colors cursor-pointer group">
+<p class="font-label-caps text-[10px] text-surface-tint mb-1">04:22 PM</p>
+<p class="text-on-surface text-sm leading-relaxed">Neural pathway for user segment 'Omega' has been optimized. Efficiency gain: +12.4%.</p>
+</div>
+<div class="p-4 bg-white/5 border-l-2 border-secondary hover:bg-white/10 transition-colors cursor-pointer group">
+<p class="font-label-caps text-[10px] text-secondary mb-1">02:15 PM</p>
+<p class="text-on-surface text-sm leading-relaxed">System anomaly detected in subsystem 3. Auto-correction protocol implemented successfully.</p>
+</div>
+<div class="p-4 bg-white/5 border-l-2 border-surface-tint hover:bg-white/10 transition-colors cursor-pointer group">
+<p class="font-label-caps text-[10px] text-surface-tint mb-1">11:05 AM</p>
+<p class="text-on-surface text-sm leading-relaxed">Weekly data aggregation complete. Total processed: 4.2 Petabytes.</p>
+</div>
+</div>
+</div>
+<!-- To-Do Tasks Widget -->
+<div class="glass-panel h-1/2 flex flex-col p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-caps text-label-caps text-primary">SYSTEM TASKS</h3>
+<div class="text-surface-tint font-data-mono text-[10px]">68% READY</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-lg border border-white/5 bg-surface-container-highest/30">
+<div class="w-5 h-5 rounded border border-surface-tint flex items-center justify-center text-surface-tint">
+<span class="material-symbols-outlined text-base" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-sm text-on-surface-variant line-through opacity-50">Sync neural clusters</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg border border-white/5 bg-surface-container-highest/30">
+<div class="w-5 h-5 rounded border border-surface-tint"></div>
+<span class="text-sm text-on-surface">Update security encryption keys</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg border border-white/5 bg-surface-container-highest/30">
+<div class="w-5 h-5 rounded border border-surface-tint"></div>
+<span class="text-sm text-on-surface">Recalibrate interface blurs</span>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full w-[68%] neon-glow"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
