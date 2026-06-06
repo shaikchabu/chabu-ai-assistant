@@ -96,6 +96,10 @@ CHABU AI Assistant is a Python-based intelligent personal assistant that support
 pip install -r requirements.txt
 python launcher.py
 ```
+## Demo Video
+
+Watch the demo here:
+https://drive.google.com/file/d/13aUqlSVdmUQ7y6hhovbbV0ZBoAeCzMlv/view?usp=sharing
 
 ## License
 
