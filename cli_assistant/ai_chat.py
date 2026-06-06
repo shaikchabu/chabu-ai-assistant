@@ -32,7 +32,7 @@ def ask_ai(prompt):
         return "AI needs GEMINI_API_KEY in your .env file. Voice commands like open google still work."
     try:
         # 1. Fetch Context
-        history = get_recent_history(limit=3) # Reduced limit for cleaner context
+        history = get_recent_history(limit=5) # Reduced limit for cleaner context
         personality = recall("personality") or "professional"
         user_name = recall("username") or "User"
 
@@ -59,8 +59,7 @@ def ask_ai(prompt):
         return clean_text
 
     except Exception as e:
-        if "429" in str(e):
-            return "Usage limit reached. Please wait a moment."
+        
         return f"AI Error: {str(e)}"
 
 # ─────────────────────────────────────────────
